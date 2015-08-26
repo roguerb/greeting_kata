@@ -21,4 +21,8 @@ class GreetingTest < Minitest::Test
   def test_two_names
     assert_equal "Hello, Jill and Jane.", greet("Jill", "Jane")
   end
+
+  def test_several_names
+    assert_equal "Hello, Amy, Brian, and Charlotte.", greet("Amy", "Brian", "Charlotte")
+  end
 end

@@ -1,11 +1,19 @@
 def greet(*names)
-  name = names.join(" and ")
+  name = oxfordize(names)
   name = "my friend" if name.empty?
 
   if shouted?(name)
     shout(name)
   else
     say(name)
+  end
+end
+
+def oxfordize(names)
+  if names.size <= 2
+    names.join(" and ")
+  else
+    "#{names[0..-2].join(", ")}, and #{names.last}"
   end
 end
 
