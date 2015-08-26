@@ -3,17 +3,18 @@ require "minitest/autorun"
 
 class GreetingTest < Minitest::Test
   def test_simple_greeting
-    greeting = greet("Bob")
-    assert_equal "Hello, Bob.", greeting
+    assert_equal "Hello, Bob.", greet("Bob")
   end
 
   def test_default_greeting_with_no_name
-    greeting = greet
-    assert_equal "Hello, my friend.", greeting
+    assert_equal "Hello, my friend.", greet
   end
 
   def test_default_greeting_when_name_is_nil
-    greeting = greet(nil)
-    assert_equal "Hello, my friend.", greeting
+    assert_equal "Hello, my friend.", greet(nil)
+  end
+
+  def test_shouting
+    assert_equal "HELLO JERRY!", greet("JERRY")
   end
 end
