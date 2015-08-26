@@ -23,7 +23,7 @@ end
 
 def greeting_for(names)
   combined = combine(names)
-  shouted?(combined) ? shout(combined) : say(combined)
+  names.all?(&method(:shouted?)) ? shout(combined) : say(combined)
 end
 
 def combine(names)
@@ -47,7 +47,7 @@ def shouted?(name)
 end
 
 def shout(name)
-  "HELLO #{name}!"
+  "HELLO #{name.upcase}!"
 end
 
 def say(name)
