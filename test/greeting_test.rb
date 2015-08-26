@@ -25,4 +25,8 @@ class GreetingTest < Minitest::Test
   def test_several_names
     assert_equal "Hello, Amy, Brian, and Charlotte.", greet("Amy", "Brian", "Charlotte")
   end
+
+  def test_mix_of_shouted_and_non_shouted_names
+    assert_equal "Hello, Amy and Charlotte. AND HELLO BRIAN!", greet("Amy", "BRIAN", "Charlotte")
+  end
 end

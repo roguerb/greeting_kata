@@ -1,17 +1,22 @@
 def greet(*names)
-  name = combine(names.compact)
+  names.compact!
+  return say("my friend") if names.empty?
 
-  if shouted?(name)
-    shout(name)
-  else
-    say(name)
-  end
+  shouted, spoken = names.partition(&method(:shouted?))
+
+  [spoken, shouted]
+    .reject(&:empty?)
+    .map(&method(:greeting_for))
+    .join(" AND ")
+end
+
+def greeting_for(names)
+  combined = combine(names)
+  shouted?(combined) ? shout(combined) : say(combined)
 end
 
 def combine(names)
   case names.size
-    when 0
-      "my friend"
     when 1
       names.first
     when 2
