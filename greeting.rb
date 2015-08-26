@@ -1,6 +1,5 @@
 def greet(*names)
-  name = oxfordize(names)
-  name = "my friend" if name.empty?
+  name = combine(names.compact)
 
   if shouted?(name)
     shout(name)
@@ -9,12 +8,22 @@ def greet(*names)
   end
 end
 
-def oxfordize(names)
-  if names.size <= 2
-    names.join(" and ")
-  else
-    "#{names[0..-2].join(", ")}, and #{names.last}"
+def combine(names)
+  case names.size
+    when 0
+      "my friend"
+    when 1
+      names.first
+    when 2
+      names.join(" and ")
+    else
+      oxfordize(names)
   end
+end
+
+def oxfordize(names)
+  last_name = names.pop
+  "#{names.join(", ")}, and #{last_name}"
 end
 
 def shouted?(name)
