@@ -1,5 +1,7 @@
-def greet(name = nil)
-  name ||= "my friend"
+def greet(*names)
+  name = names.join(" and ")
+  name = "my friend" if name.empty?
+
   if shouted?(name)
     shout(name)
   else
