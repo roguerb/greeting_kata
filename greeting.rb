@@ -1,5 +1,5 @@
 def greet(*names)
-  names.compact!
+  names = normalize(names)
   return say("my friend") if names.empty?
 
   shouted, spoken = names.partition(&method(:shouted?))
@@ -8,6 +8,13 @@ def greet(*names)
     .reject(&:empty?)
     .map(&method(:greeting_for))
     .join(" AND ")
+end
+
+def normalize(names)
+  names
+    .compact
+    .flat_map { |name| name.split(",") }
+    .map(&:strip)
 end
 
 def greeting_for(names)

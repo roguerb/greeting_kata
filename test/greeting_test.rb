@@ -29,4 +29,8 @@ class GreetingTest < Minitest::Test
   def test_mix_of_shouted_and_non_shouted_names
     assert_equal "Hello, Amy and Charlotte. AND HELLO BRIAN!", greet("Amy", "BRIAN", "Charlotte")
   end
+
+  def test_names_with_commas
+    assert_equal "Hello, Bob, Charlie, and Dianne.", greet("Bob", "Charlie, Dianne")
+  end
 end
