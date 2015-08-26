@@ -33,4 +33,8 @@ class GreetingTest < Minitest::Test
   def test_names_with_commas
     assert_equal "Hello, Bob, Charlie, and Dianne.", greet("Bob", "Charlie, Dianne")
   end
+
+  def test_names_with_intentional_commas
+    assert_equal "Hello, Bob and Charlie, Dianne.", greet("Bob", %{"Charlie, Dianne"})
+  end
 end

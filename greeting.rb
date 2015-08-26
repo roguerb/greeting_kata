@@ -13,8 +13,13 @@ end
 def normalize(names)
   names
     .compact
-    .flat_map { |name| name.split(",") }
+    .flat_map(&method(:decommafy))
     .map(&:strip)
+end
+
+def decommafy(name)
+  match = name.match(/\A"(.+)"\z/)
+  match ? match[1] : name.split(",")
 end
 
 def greeting_for(names)
